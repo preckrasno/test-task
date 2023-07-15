@@ -1,19 +1,21 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_test_task_flora/data/models/summary_model.dart';
+import 'package:flutter_test_task_flora/data/repositories/summary_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'date_of_birth_event.dart';
 part 'date_of_birth_state.dart';
 
 class DateOfBirthBloc extends Bloc<DateOfBirthEvent, DateOfBirthState> {
-  final SummaryModel summary;
+  final SummaryRepository summaryRepository;
 
   DateOfBirthBloc({
-    required this.summary,
+    required this.summaryRepository,
   }) : super(DateOfBirthInitial(
-          summary: summary,
+          summary: summaryRepository.summaryModel!,
         )) {
     on<DateOfBirthNextPressed>(_onDateOfBirthNextPressed);
+    on<DateOfBirthPopEvent>(_onDateOfBirthPopEvent);
   }
 
   void _onDateOfBirthNextPressed(
@@ -22,6 +24,13 @@ class DateOfBirthBloc extends Bloc<DateOfBirthEvent, DateOfBirthState> {
       dateOfBirth: event.dateOfBirth,
     );
 
+    summaryRepository.summaryModel = summary;
+
     emit(DateOfBirthNavigateToSummaryPage(summary: summary));
+  }
+
+  void _onDateOfBirthPopEvent(
+      DateOfBirthPopEvent event, Emitter<DateOfBirthState> emit) {
+    emit(DateOfBirthNavigatePop(summary: state.summary));
   }
 }

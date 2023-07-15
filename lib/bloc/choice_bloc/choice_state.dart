@@ -5,10 +5,4 @@ abstract class ChoiceState {}
 
 class ChoiceInitial extends ChoiceState {}
 
-class ChoiceNavigateToDateOfBirthPage extends ChoiceState {
-  final SummaryModel summary;
-
-  ChoiceNavigateToDateOfBirthPage({
-    required this.summary,
-  });
-}
+class ChoiceNavigateToDateOfBirthPage extends ChoiceState {}

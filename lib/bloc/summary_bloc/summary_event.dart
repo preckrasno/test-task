@@ -1,8 +1,5 @@
 part of 'summary_bloc.dart';
 
-abstract class SummaryEvent extends Equatable {
-  const SummaryEvent();
+abstract class SummaryEvent {}
 
-  @override
-  List<Object> get props => [];
-}
+class SummaryPopEvent extends SummaryEvent {}

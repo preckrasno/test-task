@@ -10,3 +10,5 @@ class DateOfBirthNextPressed extends DateOfBirthEvent {
     required this.dateOfBirth,
   });
 }
+
+class DateOfBirthPopEvent extends DateOfBirthEvent {}

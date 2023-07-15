@@ -90,13 +90,13 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget> {
                         diameterRatio: 2.5,
                         scrollController: _scrollController,
                         onSelectedItemChanged: (_) {},
-                        children: _getYearWidgets,
                         selectionOverlay: Container(
                           decoration: BoxDecoration(
                             color: Colors.grey.withOpacity(0.12),
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
+                        children: _getYearWidgets,
                       ),
                       Positioned(
                         top: 0,

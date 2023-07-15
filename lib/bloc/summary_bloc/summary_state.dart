@@ -15,3 +15,11 @@ class SummaryInitial extends SummaryState {
           summary: summary,
         );
 }
+
+class SummaryNavigatePop extends SummaryState {
+  const SummaryNavigatePop({
+    required SummaryModel summary,
+  }) : super(
+          summary: summary,
+        );
+}

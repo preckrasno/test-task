@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_test_task_flora/data/models/summary_model.dart';
+import 'package:flutter_test_task_flora/data/repositories/summary_repository.dart';
 import 'package:flutter_test_task_flora/theme/app_texts.dart';
 import 'package:meta/meta.dart';
 
@@ -7,7 +8,10 @@ part 'choice_event.dart';
 part 'choice_state.dart';
 
 class ChoiceBloc extends Bloc<ChoiceEvent, ChoiceState> {
-  ChoiceBloc() : super(ChoiceInitial()) {
+  final SummaryRepository summaryRepository;
+  ChoiceBloc({
+    required this.summaryRepository,
+  }) : super(ChoiceInitial()) {
     on<ChoiceTrackMyPeriodPressed>(_onChoiceTrackMyPeriodPressed);
     on<ChoiceGetPregnantPressed>(_onChoiceGetPregnantPressed);
   }
@@ -19,7 +23,9 @@ class ChoiceBloc extends Bloc<ChoiceEvent, ChoiceState> {
       choice: AppTexts.trackMyPeriod,
     );
 
-    emit(ChoiceNavigateToDateOfBirthPage(summary: summary));
+    summaryRepository.summaryModel = summary;
+
+    emit(ChoiceNavigateToDateOfBirthPage());
   }
 
   void _onChoiceGetPregnantPressed(
@@ -29,6 +35,8 @@ class ChoiceBloc extends Bloc<ChoiceEvent, ChoiceState> {
       choice: AppTexts.getPregnant,
     );
 
-    emit(ChoiceNavigateToDateOfBirthPage(summary: summary));
+    summaryRepository.summaryModel = summary;
+
+    emit(ChoiceNavigateToDateOfBirthPage());
   }
 }
