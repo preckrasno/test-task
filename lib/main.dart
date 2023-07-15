@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test_task_flora/bloc/navigation_bloc/navigation_bloc.dart';
 import 'package:flutter_test_task_flora/injection.dart';
 import 'package:flutter_test_task_flora/navigation/navigation_path.dart';
-import 'package:flutter_test_task_flora/ui/pages/choice/choice_container.dart';
-import 'package:flutter_test_task_flora/ui/pages/date_of_birth/date_of_birth_container.dart';
-import 'package:flutter_test_task_flora/ui/pages/summary/summary_container.dart';
+import 'package:flutter_test_task_flora/navigation/router/app_router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   setupInjection();
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  MainApp({super.key});
+
+  final AppRouter _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
+    return BlocProvider(
+      create: (context) => NavigationBloc()..add(NavigationOpenChoicePage()),
+      child: MaterialApp(
+        theme: ThemeData(
+          useMaterial3: true,
+        ),
+        initialRoute: NavigationPath.choice.string,
+        onGenerateRoute: _appRouter.onGenerateRoute,
       ),
-      routes: {
-        NavigationPath.choice.string: (context) => const ChoiceContainer(),
-        NavigationPath.dateOfBirth.string: (context) =>
-            const DateOfBirthContainer(),
-        NavigationPath.summary.string: (context) => const SummaryContainer(),
-      },
-      initialRoute: NavigationPath.choice.string,
     );
   }
 }

@@ -24,3 +24,11 @@ class DateOfBirthNavigateToSummaryPage extends DateOfBirthState {
           summary: summary,
         );
 }
+
+class DateOfBirthNavigatePop extends DateOfBirthState {
+  const DateOfBirthNavigatePop({
+    required SummaryModel summary,
+  }) : super(
+          summary: summary,
+        );
+}
