@@ -9,25 +9,11 @@ abstract class NavigationState {
 }
 
 class NavigationInitial extends NavigationState {
-  const NavigationInitial({
-    required super.routeStack,
-  });
+  const NavigationInitial() : super(routeStack: const []);
 }
 
-class NavigationChoicePage extends NavigationState {
-  NavigationChoicePage({
-    required super.routeStack,
-  });
-}
-
-class NavigationDateOfBirthPage extends NavigationState {
-  NavigationDateOfBirthPage({
-    required super.routeStack,
-  });
-}
-
-class NavigationSummaryPage extends NavigationState {
-  NavigationSummaryPage({
+class NavigationOpenPageState extends NavigationState {
+  const NavigationOpenPageState({
     required super.routeStack,
   });
 }

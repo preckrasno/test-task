@@ -19,9 +19,9 @@ class SummaryPage extends StatelessWidget {
       },
       builder: (context, state) {
         return WillPopScope(
-          onWillPop: () {
+          onWillPop: () async {
             summaryBloc.add(SummaryPopEvent());
-            return Future.value(false);
+            return await Future.value(false);
           },
           child: SummaryWidget(
             summary: state.summary,
