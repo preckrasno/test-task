@@ -1,3 +1,4 @@
+import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test_task_flora/bloc/navigation_bloc/navigation_bloc.dart';
@@ -8,7 +9,11 @@ import 'package:flutter_test_task_flora/navigation/router/app_router.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   setupInjection();
-  runApp(MainApp());
+  runApp(BlocProvider(
+    create: (context) => NavigationBloc()
+      ..add(NavigationPushPageEvent(path: NavigationPath.choice)),
+    child: MainApp(),
+  ));
 }
 
 class MainApp extends StatelessWidget {
@@ -18,14 +23,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NavigationBloc()..add(NavigationOpenChoicePage()),
-      child: MaterialApp(
-        theme: ThemeData(
-          useMaterial3: true,
-        ),
-        initialRoute: NavigationPath.choice.string,
-        onGenerateRoute: _appRouter.onGenerateRoute,
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+      // initialRoute: NavigationPath.choice.string,
+      // onGenerateRoute: _appRouter.onGenerateRoute,
+      home: FlowBuilder(
+        state: context.watch<NavigationBloc>().state,
+        onGeneratePages: _appRouter.onGeneratePages,
       ),
     );
   }

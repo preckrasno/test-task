@@ -8,6 +8,10 @@ import 'package:get_it/get_it.dart';
 class ChoiceContainer extends StatelessWidget {
   const ChoiceContainer({super.key});
 
+  static const Page page = MaterialPage<void>(
+    child: ChoiceContainer(),
+  );
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

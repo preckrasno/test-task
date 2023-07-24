@@ -10,6 +10,10 @@ class SummaryContainer extends StatelessWidget {
     super.key,
   });
 
+  static const Page page = MaterialPage<void>(
+    child: SummaryContainer(),
+  );
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

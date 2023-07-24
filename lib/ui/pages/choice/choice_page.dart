@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test_task_flora/bloc/choice_bloc/choice_bloc.dart';
 import 'package:flutter_test_task_flora/bloc/navigation_bloc/navigation_bloc.dart';
+import 'package:flutter_test_task_flora/navigation/navigation_path.dart';
 import 'package:flutter_test_task_flora/ui/widgets/choice/choice_widget.dart';
 
 class ChoicePage extends StatelessWidget {
@@ -16,7 +17,10 @@ class ChoicePage extends StatelessWidget {
     return BlocConsumer<ChoiceBloc, ChoiceState>(
       listener: (context, state) async {
         if (state is ChoiceNavigateToDateOfBirthPage) {
-          navigationBloc.add(NavigationOpenDateOfBirthPage());
+          // navigationBloc.add(NavigationOpenDateOfBirthPage());
+          navigationBloc.add(NavigationPushPageEvent(
+            path: NavigationPath.dateOfBirth,
+          ));
         }
       },
       builder: (context, state) {

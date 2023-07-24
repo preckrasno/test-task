@@ -10,6 +10,10 @@ class DateOfBirthContainer extends StatelessWidget {
     super.key,
   });
 
+  static const Page page = MaterialPage<void>(
+    child: DateOfBirthContainer(),
+  );
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
