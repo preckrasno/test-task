@@ -2,12 +2,6 @@ part of 'navigation_bloc.dart';
 
 abstract class NavigationEvent {}
 
-// class NavigationOpenChoicePage extends NavigationEvent {}
-
-// class NavigationOpenDateOfBirthPage extends NavigationEvent {}
-
-// class NavigationOpenSummaryPage extends NavigationEvent {}
-
 class NavigationPushPageEvent extends NavigationEvent {
   NavigationPushPageEvent({
     required this.path,

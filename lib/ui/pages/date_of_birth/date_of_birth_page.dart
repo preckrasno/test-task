@@ -17,7 +17,6 @@ class DateOfBirthPage extends StatelessWidget {
     return BlocConsumer<DateOfBirthBloc, DateOfBirthState>(
       listener: (context, state) async {
         if (state is DateOfBirthNavigateToSummaryPage) {
-          // navigationBloc.add(NavigationOpenSummaryPage());
           navigationBloc.add(NavigationPushPageEvent(
             path: NavigationPath.summary,
           ));

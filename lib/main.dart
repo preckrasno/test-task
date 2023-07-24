@@ -27,8 +27,6 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      // initialRoute: NavigationPath.choice.string,
-      // onGenerateRoute: _appRouter.onGenerateRoute,
       home: FlowBuilder(
         state: context.watch<NavigationBloc>().state,
         onGeneratePages: _appRouter.onGeneratePages,

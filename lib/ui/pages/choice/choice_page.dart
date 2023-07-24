@@ -17,7 +17,6 @@ class ChoicePage extends StatelessWidget {
     return BlocConsumer<ChoiceBloc, ChoiceState>(
       listener: (context, state) async {
         if (state is ChoiceNavigateToDateOfBirthPage) {
-          // navigationBloc.add(NavigationOpenDateOfBirthPage());
           navigationBloc.add(NavigationPushPageEvent(
             path: NavigationPath.dateOfBirth,
           ));
